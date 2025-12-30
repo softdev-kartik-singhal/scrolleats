@@ -32,8 +32,8 @@ async function registerUser(req, res) {
     }, process.env.JWT_SECRET)
     res.cookie("token", token, {
         httpOnly: true,
-        secure: false,        // true in production (https)
-        sameSite: "lax",      // IMPORTANT
+        secure: true,        // Required for HTTPS
+        sameSite: "none",    // Required for cross-origin
         maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
     });
 
