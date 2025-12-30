@@ -10,15 +10,23 @@ const cors = require("cors");
 
 app.use(cookieParser());
 app.use(express.json());
+const allowedOrigins = [
+  "https://scrolleats-application.onrender.com"
+];
+
 app.use(cors({
-    origin: "https://scrolleats.netlify.app",
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    exposedHeaders: ['Set-Cookie'],
-    preflightContinue: false,
-    optionsSuccessStatus: 204
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true); // allow mobile apps / Postman
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    return callback(new Error("Not allowed by CORS"));
+  },
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 }));
+
 
 
 app.use('/api/auth', authRoutes);
