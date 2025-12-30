@@ -1,0 +1,147 @@
+/* auth.css */
+
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 2.2rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+}
+
+/* =========================
+   TEXT
+========================= */
+
+.auth-title {
+  color: var(--text-color);
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.auth-subtitle {
+  color: var(--muted-text);
+  margin-bottom: 1.6rem;
+}
+
+.auth-footer {
+  color: var(--muted-text);
+  text-align: center;
+}
+
+.auth-footer a {
+  color: var(--primary-color);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.auth-footer a:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.auth-btn,
+button[type="submit"] {
+  width: 100%;
+  background-color: var(--primary-color);
+  border: none;
+  color: #ffffff;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.auth-btn:hover,
+button[type="submit"]:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+/* =========================
+   MUI FIXES
+========================= */
+
+.MuiInputBase-root,
+.MuiInputBase-input {
+  color: var(--text-color) !important;
+}
+
+.MuiOutlinedInput-root {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.MuiOutlinedInput-notchedOutline {
+  border-color: var(--border-color) !important;
+}
+
+.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: var(--primary-color) !important;
+}
+
+.MuiInputLabel-root {
+  color: var(--muted-text) !important;
+}
+
+.MuiInputLabel-root.Mui-focused {
+  color: var(--primary-color) !important;
+}
+
+/* =========================
+   LINK STYLES
+========================= */
+
+/* =========================
+   AUTH FOOTER LINKS
+========================= */
+
+.auth-footer {
+  color: var(--muted-text);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: white;
+}
+
+/* Blue underlined links */
+.auth-footer a {
+  color: #1e90ff;
+  text-decoration: underline;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+/* Hover state */
+.auth-footer a:hover {
+  color: #3ea6ff;
+}
+
+/* Optional: spacing for "or" line */
+.auth-footer + .auth-footer {
+  margin-top: 0.6rem;
+}
+
+/* Optional: make "or" look subtle */
+.auth-footer:has(:not(a)) {
+  opacity: 0.8;
+}
+
+.myColor {
+  color: #7f5539
+}

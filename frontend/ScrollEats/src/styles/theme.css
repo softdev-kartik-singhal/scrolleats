@@ -1,0 +1,61 @@
+/* =========================
+   THEME.CSS
+========================= */
+
+:root {
+  /* 🌿 LIGHT MODE — FULL PALETTE, NO WASTE */
+
+  /* Page background (cream → sand) */
+  --bg-color: #ECD5BC;
+
+  /* Card / surface (olive tint, NOT white) */
+  --card-bg: #fed9b7;
+
+  /* Primary text (deep olive) */
+  --text-color: #7f5539;
+
+  /* Secondary / muted text (olive) */
+  --muted-text: #540b0e;
+
+  /* Borders / outlines (sand) */
+  --border-color: #dda15e;
+
+  /* Primary actions (olive green – DISTINCT role) */
+  --primary-color: #606c38;
+
+  /* Hover / emphasis (burnt orange – DISTINCT role) */
+  --primary-hover: #bc6c25;
+}
+
+/* =========================
+   DARK MODE — UNTOUCHED
+========================= */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #22201d;
+
+    --card-bg: #22333b;
+
+    --text-color: #c6ac8f;
+    --muted-text: #5c5c5c;
+
+    --border-color: #474747;
+
+    --primary-color: #eae0d5;
+    --primary-hover: #6f6f6f;
+  }
+}
+
+/* =========================
+   GLOBAL BASE
+========================= */
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
