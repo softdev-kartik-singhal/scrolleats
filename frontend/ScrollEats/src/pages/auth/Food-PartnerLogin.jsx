@@ -9,46 +9,46 @@ import axios from "axios";
 const FoodPartnerLogin = () => {
 
   const Navigate = useNavigate();
-    const [formData, setFormData] = useState({
-      email: "",
-      password: "",
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
     });
-  
-    const handleChange = (e) => {
-      setFormData({
-        ...formData,
-        [e.target.name]: e.target.value,
-      });
-    };
-  
-    const handleSubmit = async (e) => {
-  e.preventDefault();
-  console.log("Form Data:", formData);
+  };
 
-  try {
-    const response = await axios.post(
-      "http://localhost:3000/api/auth/food-partner/login",
-      formData,
-      { withCredentials: true }
-    );
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Form Data:", formData);
 
-    console.log(response.data);
+    try {
+      const response = await axios.post(
+        "https://scrolleats-backend.onrender.com/api/auth/food-partner/login",
+        formData,
+        { withCredentials: true }
+      );
 
-    // ✅ login success
-    Navigate("/create-food");
-  } catch (error) {
-    console.error(error);
+      console.log(response.data);
 
-    // 🔴 backend error (wrong email/password, etc.)
-    if (error.response) {
-      alert(error.response.data.message || "Invalid credentials");
+      // ✅ login success
+      Navigate("/create-food");
+    } catch (error) {
+      console.error(error);
+
+      // 🔴 backend error (wrong email/password, etc.)
+      if (error.response) {
+        alert(error.response.data.message || "Invalid credentials");
+      }
+      // 🔴 server / network error
+      else {
+        alert("Server not reachable. Try again later.");
+      }
     }
-    // 🔴 server / network error
-    else {
-      alert("Server not reachable. Try again later.");
-    }
-  }
-};
+  };
 
 
   return (
@@ -59,19 +59,19 @@ const FoodPartnerLogin = () => {
           <p className="text-center auth-subtitle mb-4">
             Login to your restaurant account
           </p>
-          <p className="text-center ">Switch: <Link style={{textDecoration: "none"}} to={"/user/login"}>User</Link></p>
+          <p className="text-center ">Switch: <Link style={{ textDecoration: "none" }} to={"/user/login"}>User</Link></p>
 
           <form onSubmit={handleSubmit}>
-          <TextField onChange={handleChange} name="email" value={formData.email} label="Email" fullWidth margin="normal" />
-          <TextField onChange={handleChange} name="password" value={formData.password} label="Password" type="password" fullWidth margin="normal" />
+            <TextField onChange={handleChange} name="email" value={formData.email} label="Email" fullWidth margin="normal" />
+            <TextField onChange={handleChange} name="password" value={formData.password} label="Password" type="password" fullWidth margin="normal" />
 
-          <Button type="submit" style={{width: "100%"}} className="btn btn-secondary" variant="contained" fullWidth sx={{ mt: 2 }}>
-            Login
-          </Button>
+            <Button type="submit" style={{ width: "100%" }} className="btn btn-secondary" variant="contained" fullWidth sx={{ mt: 2 }}>
+              Login
+            </Button>
           </form>
 
           <div className="auth-footer myColor text-center mt-3">
-            New partner? <Link style={{textDecoration: "none"}} to={"/food-partner/register"}>Register</Link>
+            New partner? <Link style={{ textDecoration: "none" }} to={"/food-partner/register"}>Register</Link>
           </div>
         </div>
       </div>

@@ -12,7 +12,7 @@ const Profile = () => {
     const fetchStore = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3000/api/food-partner/${id}`,
+          `https://scrolleats-backend.onrender.com/api/food-partner/${id}`,
           { withCredentials: true }
         );
 

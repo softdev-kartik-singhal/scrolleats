@@ -20,30 +20,30 @@ export default function UserRegister() {
     });
   };
 
-  const handleSubmit = async(e) => {
-  e.preventDefault();
-  console.log("Form Data:", formData);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Form Data:", formData);
 
-  await axios
-    .post(
-      "http://localhost:3000/api/auth/user/register",
-      formData,
-      { withCredentials: true }
-    )
-    .then((response) => {
-      console.log(response.data); // ✅ correct
-      Navigate("/");
-    })
-    .catch((error) => {
-      console.error(error);
+    await axios
+      .post(
+        "https://scrolleats-backend.onrender.com/api/auth/user/register",
+        formData,
+        { withCredentials: true }
+      )
+      .then((response) => {
+        console.log(response.data); // ✅ correct
+        Navigate("/");
+      })
+      .catch((error) => {
+        console.error(error);
 
-      if (error.response) {
-        alert(error.response.data.message || "Registration failed");
-      } else {
-        alert("Server not reachable. Try again later.");
-      }
-    });
-};
+        if (error.response) {
+          alert(error.response.data.message || "Registration failed");
+        } else {
+          alert("Server not reachable. Try again later.");
+        }
+      });
+  };
 
 
   return (
@@ -52,7 +52,7 @@ export default function UserRegister() {
         <div className="auth-card">
           <h4 className="text-center auth-title">User Register</h4>
           <p className="text-center auth-subtitle mb-4">Create your account</p>
-          <p className="text-center ">Switch: <Link style={{textDecoration: "none"}} to={"/food-partner/register"}>Food Partner</Link></p>
+          <p className="text-center ">Switch: <Link style={{ textDecoration: "none" }} to={"/food-partner/register"}>Food Partner</Link></p>
 
           <form onSubmit={handleSubmit}>
             <TextField
@@ -95,7 +95,7 @@ export default function UserRegister() {
           </form>
 
           <div className="auth-footer myColor text-center mt-3">
-            Already registered? <Link style={{textDecoration: "none"}} to={"/user/login"}>Login</Link>
+            Already registered? <Link style={{ textDecoration: "none" }} to={"/user/login"}>Login</Link>
           </div>
         </div>
       </div>

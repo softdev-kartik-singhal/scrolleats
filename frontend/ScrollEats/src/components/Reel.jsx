@@ -32,46 +32,46 @@ const Reel = ({ video, setVideoRef }) => {
 
   // ---------------- LIKE ----------------
   const handleLike = async () => {
-  const prevLiked = liked;
-  const prevCount = likesCount;
+    const prevLiked = liked;
+    const prevCount = likesCount;
 
-  setLiked(!prevLiked);
-  setLikesCount(prevLiked ? prevCount - 1 : prevCount + 1);
+    setLiked(!prevLiked);
+    setLikesCount(prevLiked ? prevCount - 1 : prevCount + 1);
 
-  try {
-    await fetch("http://localhost:3000/api/food/like", {
-      method: "POST",
-      credentials: "include", // ⭐ IMPORTANT
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ foodId: video._id }),
-    });
-  } catch (err) {
-    setLiked(prevLiked);
-    setLikesCount(prevCount);
-  }
-};
+    try {
+      await fetch("https://scrolleats-backend.onrender.com/api/food/like", {
+        method: "POST",
+        credentials: "include", // ⭐ IMPORTANT
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ foodId: video._id }),
+      });
+    } catch (err) {
+      setLiked(prevLiked);
+      setLikesCount(prevCount);
+    }
+  };
 
 
   // ---------------- SAVE ----------------
   const handleSave = async () => {
-  const prevSaved = saved;
-  setSaved(!prevSaved);
+    const prevSaved = saved;
+    setSaved(!prevSaved);
 
-  try {
-    await fetch("http://localhost:3000/api/food/save", {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ foodId: video._id }),
-    });
-  } catch (err) {
-    setSaved(prevSaved);
-  }
-};
+    try {
+      await fetch("https://scrolleats-backend.onrender.com/api/food/save", {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ foodId: video._id }),
+      });
+    } catch (err) {
+      setSaved(prevSaved);
+    }
+  };
 
 
   return (

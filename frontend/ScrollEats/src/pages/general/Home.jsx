@@ -18,7 +18,7 @@ const Home = () => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/food", {
+        const response = await axios.get("https://scrolleats-backend.onrender.com/api/food", {
           withCredentials: true
         });
 

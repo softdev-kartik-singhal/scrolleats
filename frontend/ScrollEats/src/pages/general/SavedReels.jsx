@@ -14,7 +14,7 @@ const SavedReels = () => {
     useEffect(() => {
         setLoading(true);
         axios
-            .get("http://localhost:3000/api/food/saved", { withCredentials: true })
+            .get("https://scrolleats-backend.onrender.com/api/food/saved", { withCredentials: true })
             .then((res) => {
                 setVideos(res.data.foodItems || []);
                 setLoading(false);
