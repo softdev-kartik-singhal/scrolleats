@@ -5,9 +5,12 @@ const port =  process.env.PORT || 3000
 const database = require("./src/db/db.js");
 
 database();
-app.use(express.static(path.join(__dirname, "../frontend/dist")));
+app.use("/api", require("./src/routes"));
+app.use(express.static(path.join(__dirname, "../frontend/ScrollEats/dist")));
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+  res.sendFile(
+    path.join(__dirname, "../frontend/ScrollEats/dist/index.html")
+  );
 });
 
 app.listen(port, () => {
