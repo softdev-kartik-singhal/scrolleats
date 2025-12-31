@@ -32,8 +32,8 @@ async function registerUser(req, res) {
     }, process.env.JWT_SECRET)
     res.cookie("token", token, {
         httpOnly: true,
-        secure: true,        // Required for HTTPS
-        sameSite: "none",    // Required for cross-origin
+        secure: process.env.NODE_ENV === "production",  // Only secure in production
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
         maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
     });
 
@@ -72,8 +72,8 @@ async function loginUser(req, res) {
     }, process.env.JWT_SECRET)
     res.cookie("token", token, {
         httpOnly: true,
-        secure: true,
-        sameSite: "none",
+        secure: process.env.NODE_ENV === "production",
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
         maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
@@ -126,8 +126,8 @@ async function registerFoodPartner(req, res) {
 
     res.cookie("token", token, {
         httpOnly: true,
-        secure: true,
-        sameSite: "none",
+        secure: process.env.NODE_ENV === "production",
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
         maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
@@ -164,8 +164,8 @@ async function loginFoodPartner(req, res) {
     }, process.env.JWT_SECRET)
     res.cookie("token", token, {
         httpOnly: true,
-        secure: true,
-        sameSite: "none",
+        secure: process.env.NODE_ENV === "production",
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
         maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
