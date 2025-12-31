@@ -10,19 +10,10 @@ const cors = require("cors");
 
 app.use(cookieParser());
 app.use(express.json());
-const allowedOrigins = [
-  "https://scrolleats-application.onrender.com",
-  "http://localhost:5173"
-];
 
+// CORS configuration - simplified for local development
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin) return callback(null, true); // allow mobile apps / Postman
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    }
-    return callback(new Error("Not allowed by CORS"));
-  },
+  origin: true, // Allow all origins in development
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
