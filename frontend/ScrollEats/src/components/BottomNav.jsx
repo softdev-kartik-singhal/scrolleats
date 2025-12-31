@@ -8,7 +8,7 @@ const BottomNav = () => {
 
   return (
     <div className="bottom-nav">
-      <Link to="/" className={location.pathname === "/" ? "active" : ""}>
+      <Link to="/reels" className={location.pathname === "/reels" ? "active" : ""}>
         <HomeIcon />
         <span>Home</span>
       </Link>

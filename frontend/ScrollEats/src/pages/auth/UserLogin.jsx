@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from "../../config/api";
 
 
 export default function UserLogin() {
@@ -28,7 +29,7 @@ export default function UserLogin() {
 
     await axios
       .post(
-        "https://scrolleats-backend.onrender.com/api/auth/user/login",
+        `${API_BASE_URL}/api/auth/user/login`,
         formData,
         { withCredentials: true }
       )
@@ -36,7 +37,7 @@ export default function UserLogin() {
         console.log(response.data);
 
         // ✅ login success
-        Navigate("/");
+        Navigate("/reels");
       })
       .catch((error) => {
         console.error(error);

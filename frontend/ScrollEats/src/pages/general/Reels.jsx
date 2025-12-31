@@ -1,29 +1,35 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import Reel from "../../components/Reel";
+import API_BASE_URL from "../../config/api";
 import "../../styles/Reels.css";
 import BottomNav from "../../components/BottomNav";
-import API_BASE_URL from "../../config/api";
 
-const SavedReels = () => {
+const Reels = () => {
     const [videos, setVideos] = useState([]);
     const [loading, setLoading] = useState(true);
     const videoRefs = useRef(new Map());
     const containerRef = useRef(null);
 
-    // Fetch saved videos
+    // Fetch food items
     useEffect(() => {
-        setLoading(true);
-        axios
-            .get(`${API_BASE_URL}/api/food/saved`, { withCredentials: true })
-            .then((res) => {
-                setVideos(res.data.foodItems || []);
+        const fetchVideos = async () => {
+            try {
+                const response = await axios.get(`${API_BASE_URL}/api/food`, {
+                    withCredentials: true
+                });
+
+                if (response.data.foodItems) {
+                    setVideos(response.data.foodItems || []);
+                }
+            } catch (error) {
+                console.error("Error fetching videos:", error);
+            } finally {
                 setLoading(false);
-            })
-            .catch((err) => {
-                console.error(err);
-                setLoading(false);
-            });
+            }
+        };
+
+        fetchVideos();
     }, []);
 
     // Auto play / pause logic
@@ -58,45 +64,23 @@ const SavedReels = () => {
         videoRefs.current.set(id, el);
     };
 
+    // Show loading state
     if (loading) {
         return (
-            <>
-                <div className="reels-container" style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    height: '100vh',
-                    color: 'white'
-                }}>
-                    <p>Loading saved reels...</p>
-                </div>
-                <BottomNav />
-            </>
+            <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: '100vh',
+                background: '#000',
+                color: '#fff'
+            }}>
+                <p>Loading reels...</p>
+            </div>
         );
     }
 
-    if (!videos.length) {
-        return (
-            <>
-                <div className="reels-container" style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    height: '100vh',
-                    color: 'white',
-                    flexDirection: 'column',
-                    gap: '1rem'
-                }}>
-                    <p style={{ fontSize: '1.2rem' }}>No saved reels yet</p>
-                    <p style={{ fontSize: '0.9rem', opacity: 0.7 }}>
-                        Start saving your favorite food reels!
-                    </p>
-                </div>
-                <BottomNav />
-            </>
-        );
-    }
-
+    // Show reels
     return (
         <>
             <div ref={containerRef} className="reels-container">
@@ -110,4 +94,4 @@ const SavedReels = () => {
     );
 };
 
-export default SavedReels;
+export default Reels;

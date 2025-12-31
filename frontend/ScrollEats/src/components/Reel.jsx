@@ -6,6 +6,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import MessageIcon from "@mui/icons-material/Message";
+import API_BASE_URL from "../config/api";
 
 const Reel = ({ video, setVideoRef }) => {
 
@@ -39,7 +40,7 @@ const Reel = ({ video, setVideoRef }) => {
     setLikesCount(prevLiked ? prevCount - 1 : prevCount + 1);
 
     try {
-      await fetch("https://scrolleats-backend.onrender.com/api/food/like", {
+      await fetch(`${API_BASE_URL}/api/food/like`, {
         method: "POST",
         credentials: "include", // ⭐ IMPORTANT
         headers: {
@@ -60,7 +61,7 @@ const Reel = ({ video, setVideoRef }) => {
     setSaved(!prevSaved);
 
     try {
-      await fetch("https://scrolleats-backend.onrender.com/api/food/save", {
+      await fetch(`${API_BASE_URL}/api/food/save`, {
         method: "POST",
         credentials: "include",
         headers: {

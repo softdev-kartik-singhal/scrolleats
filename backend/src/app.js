@@ -11,7 +11,8 @@ const cors = require("cors");
 app.use(cookieParser());
 app.use(express.json());
 const allowedOrigins = [
-  "https://scrolleats-application.onrender.com"
+  "https://scrolleats-application.onrender.com",
+  "http://localhost:5173"
 ];
 
 app.use(cors({

@@ -4,6 +4,7 @@ import "../../styles/auth.css";
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import API_BASE_URL from "../../config/api";
 
 export default function UserRegister() {
   const Navigate = useNavigate();
@@ -26,13 +27,13 @@ export default function UserRegister() {
 
     await axios
       .post(
-        "https://scrolleats-backend.onrender.com/api/auth/user/register",
+        `${API_BASE_URL}/api/auth/user/register`,
         formData,
         { withCredentials: true }
       )
       .then((response) => {
         console.log(response.data); // ✅ correct
-        Navigate("/");
+        Navigate("/reels");
       })
       .catch((error) => {
         console.error(error);
