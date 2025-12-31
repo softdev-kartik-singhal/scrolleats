@@ -31,11 +31,12 @@ async function registerUser(req, res) {
 
     }, process.env.JWT_SECRET)
     res.cookie("token", token, {
-        httpOnly: true,
-        secure: true,        // REQUIRED for cross-site
-        sameSite: "none",    // REQUIRED for cross-site
-        maxAge: 7 * 24 * 60 * 60 * 1000,
-    });
+  httpOnly: true,
+  sameSite: "lax",
+  secure: false, // Render handles HTTPS
+  maxAge: 7 * 24 * 60 * 60 * 1000
+});
+
 
 
 
@@ -72,11 +73,12 @@ async function loginUser(req, res) {
 
     }, process.env.JWT_SECRET)
     res.cookie("token", token, {
-        httpOnly: true,
-        secure: true,        // REQUIRED for cross-site
-        sameSite: "none",    // REQUIRED for cross-site
-        maxAge: 7 * 24 * 60 * 60 * 1000,
-    });
+  httpOnly: true,
+  sameSite: "lax",
+  secure: false, // Render handles HTTPS
+  maxAge: 7 * 24 * 60 * 60 * 1000
+});
+
 
 
 
@@ -127,11 +129,12 @@ async function registerFoodPartner(req, res) {
     )
 
     res.cookie("token", token, {
-        httpOnly: true,
-        secure: true,        // REQUIRED for cross-site
-        sameSite: "none",    // REQUIRED for cross-site
-        maxAge: 7 * 24 * 60 * 60 * 1000,
-    });
+  httpOnly: true,
+  sameSite: "lax",
+  secure: false, // Render handles HTTPS
+  maxAge: 7 * 24 * 60 * 60 * 1000
+});
+
 
 
 
@@ -166,11 +169,12 @@ async function loginFoodPartner(req, res) {
         id: foodPartner._id,
     }, process.env.JWT_SECRET)
     res.cookie("token", token, {
-        httpOnly: true,
-        secure: true,        // REQUIRED for cross-site
-        sameSite: "none",    // REQUIRED for cross-site
-        maxAge: 7 * 24 * 60 * 60 * 1000,
-    });
+  httpOnly: true,
+  sameSite: "lax",
+  secure: false, // Render handles HTTPS
+  maxAge: 7 * 24 * 60 * 60 * 1000
+});
+
 
 
 
