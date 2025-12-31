@@ -10,7 +10,7 @@ const ProtectedRoute = ({ children }) => {
     useEffect(() => {
         const checkAuth = async () => {
             try {
-                const response = await axios.get(`${API_BASE_URL}/api/food`, {
+                const response = await axios.get(`${API_BASE_URL}/api/reels`, {
                     withCredentials: true
                 });
 

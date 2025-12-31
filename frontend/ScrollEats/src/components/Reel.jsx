@@ -40,7 +40,7 @@ const Reel = ({ video, setVideoRef }) => {
     setLikesCount(prevLiked ? prevCount - 1 : prevCount + 1);
 
     try {
-      await fetch(`${API_BASE_URL}/api/food/like`, {
+      await fetch(`${API_BASE_URL}/api/reels/like`, {
         method: "POST",
         credentials: "include", // ⭐ IMPORTANT
         headers: {
@@ -61,7 +61,7 @@ const Reel = ({ video, setVideoRef }) => {
     setSaved(!prevSaved);
 
     try {
-      await fetch(`${API_BASE_URL}/api/food/save`, {
+      await fetch(`${API_BASE_URL}/api/reels/save`, {
         method: "POST",
         credentials: "include",
         headers: {

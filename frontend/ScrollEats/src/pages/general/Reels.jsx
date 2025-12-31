@@ -15,7 +15,7 @@ const Reels = () => {
     useEffect(() => {
         const fetchVideos = async () => {
             try {
-                const response = await axios.get(`${API_BASE_URL}/api/food`, {
+                const response = await axios.get(`${API_BASE_URL}/api/reels`, {
                     withCredentials: true
                 });
 

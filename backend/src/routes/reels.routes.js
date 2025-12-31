@@ -1,5 +1,5 @@
 const express = require("express");
-const foodController = require("../controllers/food.controller");
+const reelsController = require("../controllers/reels.controller");
 const authMiddleware = require("../middlewares/auth.middleware");
 const router = express.Router();
 const multer = require("multer");
@@ -10,44 +10,44 @@ const upload = multer({
     storage: multer.memoryStorage(),
 })
 
-//post  /api/food [protected]
+//post  /api/reels [protected]
 router.post("/",
     authMiddleware.authFoodPartnerMiddelware,
     upload.single("video"),
-    foodController.createFoodItem
+    reelsController.createFoodItem
 )
 
 
-//get  /api/food [protected]
+//get  /api/reels [protected]
 
 router.get("/",
     authMiddleware.authUserMiddleware,
-    foodController.getFoodItems,
+    reelsController.getFoodItems,
 )
 
-//get /api/food/food-partner/:id
+//get /api/reels/food-partner/:id
 
 router.get("/food-partner/:id",
     authMiddleware.authUserMiddleware,
     foodPartnerController.getFoodPartnerById
 )
 
-//post /api/food/
+//post /api/reels/like
 
 router.post("/like",
     authMiddleware.authUserMiddleware,
-    foodController.likeFoodItem
+    reelsController.likeFoodItem
 )
 
 router.post("/save",
     authMiddleware.authUserMiddleware,
-    foodController.saveFoodItem
+    reelsController.saveFoodItem
 )
 
-//get /api/food/saved
+//get /api/reels/saved
 router.get("/saved",
     authMiddleware.authUserMiddleware,
-    foodController.getSavedFoodItems
+    reelsController.getSavedFoodItems
 )
 
 

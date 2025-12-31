@@ -15,7 +15,7 @@ const SavedReels = () => {
     useEffect(() => {
         setLoading(true);
         axios
-            .get(`${API_BASE_URL}/api/food/saved`, { withCredentials: true })
+            .get(`${API_BASE_URL}/api/reels/saved`, { withCredentials: true })
             .then((res) => {
                 setVideos(res.data.foodItems || []);
                 setLoading(false);
