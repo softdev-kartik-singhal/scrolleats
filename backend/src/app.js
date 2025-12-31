@@ -1,29 +1,21 @@
-// create server
-
-const cookieParser = require("cookie-parser");
 const express = require("express");
-const app = express();
-const authRoutes = require("./routes/auth.routes")
-const reelsRoutes = require("./routes/reels.routes")
-const foodPartnerRoutes = require("./routes/food-partner.routes")
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 
-app.use(cookieParser());
+const app = express();
+
 app.use(express.json());
+app.use(cookieParser());
 
-app.set("trust proxy", 1);
-// CORS configuration - simplified for local development
-app.use(cors({
-  origin: true, // Allow all origins in development
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: "https://scrolleats-application.onrender.com",
+    credentials: true,
+  })
+);
 
-
-
-app.use('/api/auth', authRoutes);
-app.use('/api/reels', reelsRoutes);
-app.use("/api/food-partner", foodPartnerRoutes);
-
+// routes
+app.use("/api/auth", require("./routes/auth.routes"));
+app.use("/api/reels", require("./routes/reels.routes"));
 
 module.exports = app;
-
