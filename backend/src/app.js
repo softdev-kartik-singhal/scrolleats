@@ -16,8 +16,8 @@ app.use("/api/food-partner", require("./routes/food-partner.routes"));
 // Serve frontend static files (AFTER API routes)
 app.use(express.static(path.join(__dirname, "../../frontend/ScrollEats/dist")));
 
-// React SPA fallback - catch all other routes
-app.get("*", (req, res) => {
+// React SPA fallback - catch all other routes (Express 5 syntax)
+app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "../../frontend/ScrollEats/dist/index.html"));
 });
 
