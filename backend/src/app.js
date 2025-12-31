@@ -11,12 +11,11 @@ const cors = require("cors");
 app.use(cookieParser());
 app.use(express.json());
 
+app.set("trust proxy", 1);
 // CORS configuration - simplified for local development
 app.use(cors({
   origin: true, // Allow all origins in development
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
 }));
 
 

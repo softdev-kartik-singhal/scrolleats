@@ -8,6 +8,7 @@ import "./styles/auth.css";
 
 // ✅ Bootstrap import (THIS IS THE RIGHT PLACE)
 import "bootstrap/dist/css/bootstrap.min.css";
+axios.defaults.withCredentials = true;
 
 createRoot(document.getElementById('root')).render(
     <App />
