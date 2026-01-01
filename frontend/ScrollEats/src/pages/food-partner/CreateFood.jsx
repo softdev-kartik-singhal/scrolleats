@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../../styles/CreateFood.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from "../../config/api";
 
 const CreateFood = () => {
   const [formData, setFormData] = useState({
@@ -32,7 +33,7 @@ const CreateFood = () => {
 
     try {
       const res = await axios.post(
-        "https://scrolleats-backend.onrender.com/api/food",
+        `${API_BASE_URL}/api/reels`,
         data,
         {
           withCredentials: true,
