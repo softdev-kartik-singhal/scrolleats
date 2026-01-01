@@ -5,6 +5,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from "../../config/api";
 
 const FoodPartnerRegister = () => {
 
@@ -30,7 +31,7 @@ const FoodPartnerRegister = () => {
 
     try {
       const response = await axios.post(
-        "https://scrolleats-backend.onrender.com/api/auth/food-partner/register",
+        `${API_BASE_URL}/api/auth/food-partner/register`,
         formData,
         { withCredentials: true }
       );
