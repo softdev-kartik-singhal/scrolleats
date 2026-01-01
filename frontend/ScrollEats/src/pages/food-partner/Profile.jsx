@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import "../../styles/Profile.css";
+import API_BASE_URL from "../../config/api";
 
 const Profile = () => {
   const { id } = useParams();
@@ -12,7 +13,7 @@ const Profile = () => {
     const fetchStore = async () => {
       try {
         const res = await axios.get(
-          `https://scrolleats-backend.onrender.com/api/food-partner/${id}`,
+          `${API_BASE_URL}/api/reels/food-partner/${id}`,
           { withCredentials: true }
         );
 
