@@ -7,7 +7,7 @@
 [![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)](https://reactjs.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white)](https://nodejs.org/)
 
-**Live Demo:** [Coming Soon]  
+**Live Demo:** [scrolleats](scrolleats-application.onrender.com)  
 **GitHub:** [https://github.com/softdev-kartik-singhal/scrolleats](https://github.com/softdev-kartik-singhal/scrolleats)
 
 ---
